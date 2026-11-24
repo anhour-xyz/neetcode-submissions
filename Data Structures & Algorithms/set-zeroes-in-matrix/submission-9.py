@@ -1,0 +1,32 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        
+        rows, cols = len(matrix), len(matrix[0])
+
+        check_row, check_col = False, False
+
+        for c in range(cols):
+            if matrix[0][c] == 0: check_row = True
+        
+        for r in range(rows):
+            if matrix[r][0] == 0: check_col = True
+
+        for r in range(rows):
+            for c in range(cols):
+                if matrix[r][c] == 0:
+                    matrix[r][0] = 0
+                    matrix[0][c] = 0
+
+        for r in range(rows):
+            for c in range(cols):
+                if matrix[r][0] == 0 or matrix[0][c] == 0:
+                    matrix[r][c] = 0
+
+        if check_row:
+            for c in range(cols):
+                matrix[0][c] = 0
+        if check_col:
+            for r in range(rows):
+                matrix[r][0] = 0
+
+        
